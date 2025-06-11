@@ -3,3 +3,8 @@ export interface RegisterUserBodyType {
   email: string;
   password: string;
 }
+
+export interface LoginUserBodyType {
+  email: string;
+  password: string;
+}

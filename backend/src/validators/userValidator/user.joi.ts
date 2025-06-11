@@ -8,3 +8,10 @@ export const registerUserValidation = celebrate({
     password: passwordComplexity().required().label("Password"),
   },
 });
+
+export const loginUserValidation = celebrate({
+  body: {
+    email: Joi.string().email().required().label("Email"),
+    password: passwordComplexity().required().label("Password"),
+  },
+});
