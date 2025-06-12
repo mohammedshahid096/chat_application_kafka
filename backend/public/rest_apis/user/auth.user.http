@@ -17,3 +17,7 @@ Content-Type: application/json
     "password" :"Test@123"
 }
 
+
+### Get my profile
+GET http://localhost:8000/api/v1/user/my-profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyNzI0ZTIwLWJiNTctNDk4MS1iNDkyLTlkNjJjODY0YjE1YyIsImlhdCI6MTc0OTY2MzUwNSwiZXhwIjoxNzQ5OTIyNzA1fQ.zrDI7aAn1FGcVlznVGcLT1_bJZikWbREzGXiEBKLRhA

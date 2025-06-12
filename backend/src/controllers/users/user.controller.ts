@@ -12,7 +12,9 @@ import { verifyPasswordMethod } from "../../utils/verify.password";
 import { createAccessToken } from "../../utils/jwt.token";
 import { UserSchemaType } from "../../types/schemas/users/user";
 import _ from "lodash";
-
+interface AuthenticatedRequest extends Request {
+  authUser?: UserSchemaType;
+}
 export const registerUserController = async (
   req: Request,
   res: Response,
@@ -100,4 +102,48 @@ export const loginUserController = async (
     message: "user successfully login",
     data,
   });
+};
+
+export const getUserProfileDetailsController = async (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    logger.info(
+      "controllers - users - user.controller - getUserProfileDetailsController - Start"
+    );
+    const userId = req?.authUser?.id;
+
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        created_at: true,
+      },
+    });
+
+    if (!user) {
+      return next(httpErrors.NotFound("User not found"));
+    }
+
+    logger.info(
+      "controllers - users - user.controller - getUserProfileDetailsController - End"
+    );
+
+    res.status(200).json({
+      success: true,
+      statusCode: 200,
+      message: "User profile details fetched successfully",
+      data: user,
+    });
+  } catch (error) {
+    logger.error(
+      "controllers - users - user.controller - getUserProfileDetailsController - Error",
+      error
+    );
+    errorHandling.handlingControllerError(error as AppError, next);
+  }
 };
