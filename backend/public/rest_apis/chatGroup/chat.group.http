@@ -1,0 +1,9 @@
+### create Chat Group
+POST http://localhost:8000/api/v1/chat-group/create-group
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc5OTUyMTIzLWU0N2EtNGEzNi05NjBjLTEzYWQyOWY4YzRlYiIsImlhdCI6MTc0OTcxNzg3OCwiZXhwIjoxNzQ5OTc3MDc4fQ.XlSaYSKuNxFnD61QplHdg4vy6bT4y0PA5j6SO1T_RfI
+Content-Type: application/json
+
+{
+    "title": "test_chat_group_1",
+    "passcode" :"Test@123"
+}

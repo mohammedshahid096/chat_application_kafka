@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// user Model
+model User {
+  id         String      @id @default(uuid()) @db.Uuid
+  name       String      @db.VarChar(190)
+  email      String      @unique @db.VarChar(190)
+  password   String      @db.VarChar(200)
+  profileUrl String?
+  ChatGroup  ChatGroup[]
+  created_at DateTime    @default(now())
+  updated_at DateTime    @default(now()) @updatedAt
+
+  @@map("users")
+}
+
+model ChatGroup {
+  id         String       @id @default(uuid()) @db.Uuid
+  user_id    String       @db.Uuid
+  user       User         @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  title      String       @db.VarChar(190)
+  passcode   String       @db.VarChar(30)
+  created_at DateTime     @default(now())
+  updated_at DateTime     @default(now()) @updatedAt
+  GroupUsers GroupUsers[]
+
+  @@index([created_at])
+  @@map("chat_groups")
+}
+
+model GroupUsers {
+  id         String    @id @default(uuid()) @db.Uuid
+  group_id   String    @db.Uuid
+  group      ChatGroup @relation(fields: [group_id], references: [id], onDelete: Cascade)
+  name       String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @default(now()) @updatedAt
+
+  @@map("group_users")
+}
