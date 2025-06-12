@@ -12,9 +12,8 @@ import { verifyPasswordMethod } from "../../utils/verify.password";
 import { createAccessToken } from "../../utils/jwt.token";
 import { UserSchemaType } from "../../types/schemas/users/user";
 import _ from "lodash";
-interface AuthenticatedRequest extends Request {
-  authUser?: UserSchemaType;
-}
+import { AuthenticatedRequest } from "../../types";
+
 export const registerUserController = async (
   req: Request,
   res: Response,

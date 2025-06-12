@@ -4,11 +4,7 @@ import errorHandling from "../utils/errorHandling";
 import logger from "../config/logger.config";
 import { verifyAccessToken } from "../utils/jwt.token";
 import prisma from "../config/db.config";
-import { UserSchemaType } from "../types/schemas/users/user";
-
-interface AuthenticatedRequest extends Request {
-  authUser?: UserSchemaType;
-}
+import { AuthenticatedRequest } from "../types";
 
 export const Authentication = async (
   req: AuthenticatedRequest,
