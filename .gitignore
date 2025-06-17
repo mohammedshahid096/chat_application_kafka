@@ -1,6 +1,7 @@
 
 backend/.env
 frontend/.env
+kafka_tutorial/node_modules
 
 *.env
 *.zip
