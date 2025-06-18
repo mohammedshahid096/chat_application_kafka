@@ -1,9 +1,33 @@
+@API_TOKEN_LOCAL = {{API_TOKEN}}
+@API_BASE_URL_LOCAL = {{API_BASE_URL}}
 ### create Chat Group
-POST http://localhost:8000/api/v1/chat-group/create-group
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc5OTUyMTIzLWU0N2EtNGEzNi05NjBjLTEzYWQyOWY4YzRlYiIsImlhdCI6MTc0OTcxNzg3OCwiZXhwIjoxNzQ5OTc3MDc4fQ.XlSaYSKuNxFnD61QplHdg4vy6bT4y0PA5j6SO1T_RfI
+POST {{API_BASE_URL_LOCAL}}/chat-group/create-group
+Authorization: Bearer {{API_TOKEN_LOCAL}}
 Content-Type: application/json
 
 {
-    "title": "test_chat_group_1",
+    "title": "test_chat_group_2",
     "passcode" :"Test@123"
 }
+### get Chat Groups
+GET {{API_BASE_URL_LOCAL}}/chat-group/chat-groups-list
+Authorization: Bearer {{API_TOKEN_LOCAL}}
+
+### get single group
+GET {{API_BASE_URL_LOCAL}}/chat-group/individual/7e8e1adc-32c5-4e52-898a-7a182f8a7de1
+Authorization: Bearer {{API_TOKEN_LOCAL}}
+
+
+### update single group
+PUT {{API_BASE_URL_LOCAL}}/chat-group/individual/7e8e1adc-32c5-4e52-898a-7a182f8a7de1
+Authorization: Bearer {{API_TOKEN_LOCAL}}
+Content-Type: application/json
+
+{
+    "title": "test_chat_group_1_update"
+}
+
+
+### delete single group
+DELETE  {{API_BASE_URL_LOCAL}}/chat-group/individual/a749b05d-5b02-4398-8243-66e517862ae8
+Authorization: Bearer {{API_TOKEN_LOCAL}}

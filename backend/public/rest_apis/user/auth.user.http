@@ -1,5 +1,8 @@
+@API_TOKEN_LOCAL = {{API_TOKEN}}
+@API_BASE_URL_LOCAL = {{API_BASE_URL}}
+
 ### Register a new user
-POST http://localhost:8000/api/v1/user/register
+POST {{API_BASE_URL_LOCAL}}/user/register
 Content-Type: application/json
 
 {
@@ -9,7 +12,7 @@ Content-Type: application/json
 }
 
 ### login a  user
-POST http://localhost:8000/api/v1/user/login
+POST {{API_BASE_URL_LOCAL}}/user/login
 Content-Type: application/json
 
 {
@@ -19,5 +22,5 @@ Content-Type: application/json
 
 
 ### Get my profile
-GET http://localhost:8000/api/v1/user/my-profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkyNzI0ZTIwLWJiNTctNDk4MS1iNDkyLTlkNjJjODY0YjE1YyIsImlhdCI6MTc0OTY2MzUwNSwiZXhwIjoxNzQ5OTIyNzA1fQ.zrDI7aAn1FGcVlznVGcLT1_bJZikWbREzGXiEBKLRhA
+GET {{API_BASE_URL_LOCAL}}/user/my-profile
+Authorization: Bearer {{API_TOKEN_LOCAL}}

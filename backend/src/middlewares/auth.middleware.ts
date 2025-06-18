@@ -14,6 +14,7 @@ export const Authentication = async (
   try {
     logger.info("middlewares - auth.middleware - Authentication - start");
     let authHeader = req.header("Authorization");
+    console.log(authHeader);
 
     // Validate token format
     if (!authHeader || !authHeader.startsWith("Bearer ")) {

@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "dev": "nodemon",
     "build": "tsc",
-    "prisma:generate": "npx prisma generate",
+    "prisma:generate": "prisma generate --schema=src/prisma/schema.prisma",
     "prisma:migrate": "npx prisma migrate dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,7 +31,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@prisma/client": "^6.9.0",
+    "@prisma/client": "^6.10.0",
     "bcrypt": "^6.0.0",
     "celebrate": "^15.0.3",
     "compression": "^1.8.0",
